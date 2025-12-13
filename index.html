@@ -5,28 +5,84 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
+        <!-- preconect styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- normalice -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <!-- styles -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-C9Z8tvtb.css">
   </head>
   <body>
+    <header class="header">
+  <div class="container header-container">
+    <nav class="header-nav">
+      <svg class="icon-header-btn" width="157px" height="51px">
+        <use href="/img/icons.svg#icon-logo"></use>
+      </svg>
 
+      <!-- desktop navigation -->
+      <ul class="header-nav-list">
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Знайди друга</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Про нас</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Часті запитання</a>
+        </li>
+        <li class="header-nav-item">
+          <a href="#" class="header-nav-link">Історії успіху</a>
+        </li>
+      </ul>
 
-    <!-- <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+      <a href="#" class="header-btn">Взяти друга</a>
+    </nav>
+
+    <!-- burger button -->
+    <button class="header-modal-btn">
+      <svg width="24px" height="24px">
+        <use href="/img/icons.svg#icon-menu"></use>
+      </svg>
+    </button>
+
+    <!-- mobile menu -->
+    <div class="header-modal-menu">
+      <button class="header-close-btn">
+        <svg width="24px" height="24px">
+          <use href="/img/icons.svg#icon-close"></use>
+        </svg>
+      </button>
+      <ul class="header-modal-list">
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Знайди друга</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Про нас</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Часті запитання</a>
+        </li>
+        <li class="header-modal-item">
+          <a href="#" class="header-modal-link">Історії успіху</a>
+        </li>
+      </ul>
+
+      <a href="#" class="header-btn">Взяти друга</a>
+    </div>
   </div>
-</footer>
- -->
+</header>
+
+    
+    
+    
+    
+    
+    
+    
 
   </body>
 </html>
