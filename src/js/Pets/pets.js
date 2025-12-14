@@ -7,6 +7,8 @@ const BASE_URL = 'https://paw-hut.b.goit.study/api/';
 const CATECORIES_URL = 'categories';
 const ANIMALS_URL = 'animals';
 
+const deskMediaQuery = window.matchMedia('(min-width: 1440px)');
+
 const categories = document.querySelector('.categories-list');
 const allAnimals = document.querySelector('.animals-list');
 
@@ -36,15 +38,25 @@ function createMarkupCategories(arr) {
     .join('');
 }
 let page = 1;
+let limit = 0;
+function handleDeskChange(e) {
+  if (e.matches) {
+    return (limit = 9);
+  } else {
+    return (limit = 8);
+  }
+}
+deskMediaQuery.addEventListener('change', handleDeskChange);
+handleDeskChange(deskMediaQuery);
+
 async function createAnimalsCards() {
   const { data } = await axios(`${BASE_URL}${ANIMALS_URL}`, {
     params: {
       page,
-      limit: 8,
+      limit,
+      species: 'Кіт',
     },
   });
-  console.log(data);
-
   return data;
 }
 

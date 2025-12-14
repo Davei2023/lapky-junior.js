@@ -34,6 +34,7 @@
 
 .categories-text {
   padding: 10px 16px;
+  cursor: pointer;
 }
 
 .categories-text:hover,
