@@ -34,17 +34,17 @@ createCategories().then(data => {
 
 function createMarkupCategories(arr) {
   const sortedArr = arr.toSorted((a, b) => b._id.localeCompare(a._id));
-  console.log(sortedArr);
 
   return sortedArr
     .map(
       ({ name, _id }) =>
-        `<li class="categories-item" id=${_id} ><div class="categories-text">${name}</div></li>`
+        `<li class="categories-item"><div class="categories-text" data-id="${_id}" >${name}</div></li>`
     )
     .join('');
 }
 let page = 1;
 let limit = 0;
+let categoryId = 'animals';
 function handleDeskChange(e) {
   if (e.matches) {
     return (limit = 9);
@@ -60,8 +60,11 @@ async function createAnimalsCards() {
     params: {
       page,
       limit,
+      // categoryId,
     },
   });
+  console.log(data);
+
   return data;
 }
 
@@ -118,8 +121,8 @@ async function handleClickCategoriesMurkup(event) {
     !(event.target.textContent === 'Всі')
   ) {
     activeCategories.classList.remove('active');
+
+    const categoryId = event.target.dataset.id;
     allAnimals.innerHTML = '';
-    const species = event.target;
-    console.log(species);
   }
 }
