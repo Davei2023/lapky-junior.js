@@ -1,4 +1,3 @@
-
 import './js/header/header.js';
 import './js/hero/hero.js';
 import './js/Faq/faq.js';
