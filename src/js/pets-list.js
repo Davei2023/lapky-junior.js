@@ -62,11 +62,13 @@ function createMarkupAnimals(arr) {
   return arr
     .map(
       ({ image, name, species, categories, age, gender, behavior }) =>
-        `<li><img src="${image}" alt="${species}"/><p>${species}</p><h2>${name}</h2><div>${categories
-          .map(({ name }) => `<h3>${name}</h3>`)
+        `<li class="animals-item"><img class="animals-img" src="${image}" alt="${species}"/><div class="animals-item-container"><p class="animals-subtitle">${species}</p><h2 class="animals-title">${name}</h2><div class="animals-sublist">${categories
+          .map(({ name }) => `<h3 class="animals-categories">${name}</h3>`)
           .join(
             ''
-          )}</div><div><p>${age}</p><p>${gender}</p></div><p>${behavior}</p></li>`
+          )}</div><div class="animals-textlist"><p class="animals-subtitle">${age}</p><p class="animals-subtitle">${gender}</p></div></div>
+          <p class="animals-text">${behavior}</p>
+          <button class="animals-btn">Дізнатись більше</button></li>`
     )
     .join('');
 }
