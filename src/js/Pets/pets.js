@@ -33,7 +33,10 @@ createCategories().then(data => {
 // });
 
 function createMarkupCategories(arr) {
-  return arr
+  const sortedArr = arr.toSorted((a, b) => b._id.localeCompare(a._id));
+  console.log(sortedArr);
+
+  return sortedArr
     .map(
       ({ name, _id }) =>
         `<li class="categories-item" id=${_id} ><div class="categories-text">${name}</div></li>`
