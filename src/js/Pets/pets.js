@@ -14,7 +14,6 @@ const allAnimals = document.querySelector('.animals-list');
 const listCategories = document.querySelector('.categories-list');
 const moreBtn = document.querySelector('.loadmore-btn');
 const activeCategories = document.querySelector('.categories-text');
-console.log(listCategories);
 
 async function createCategories() {
   const { data } = await axios(`${BASE_URL}${CATECORIES_URL}`);
@@ -36,8 +35,8 @@ createCategories().then(data => {
 function createMarkupCategories(arr) {
   return arr
     .map(
-      ({ name }) =>
-        `<li class="categories-item"><div class="categories-text">${name}</div></li>`
+      ({ name, _id }) =>
+        `<li class="categories-item" id=${_id} ><div class="categories-text">${name}</div></li>`
     )
     .join('');
 }
@@ -58,7 +57,6 @@ async function createAnimalsCards() {
     params: {
       page,
       limit,
-      species: 'Кіт',
     },
   });
   return data;
@@ -106,4 +104,19 @@ async function handleClickMurcup() {
       moreBtn.classList.add('disabled');
     }
   } catch {}
+}
+
+listCategories.addEventListener('click', handleClickCategoriesMurkup);
+
+async function handleClickCategoriesMurkup(event) {
+  event.preventDefault();
+  if (
+    !(event.target === event.currentTarget) &&
+    !(event.target.textContent === 'Всі')
+  ) {
+    activeCategories.classList.remove('active');
+    allAnimals.innerHTML = '';
+    const species = event.target;
+    console.log(species);
+  }
 }
