@@ -1,0 +1,13 @@
+.pets_title {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+.pets_text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+}
