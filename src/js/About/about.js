@@ -12,7 +12,11 @@ new Swiper('.swiper', {
     el: '.swiper-pagination',
     clickable: true,
   },
-
+    breakpoints: {
+      375: { slidesPerView: 1 },
+      768: { slidesPerView: 1 },
+      1440: { slidesPerView: 1 },
+    },
   grabCursor: true,
   allowTouchMove: true,
   watchOverflow: true,
