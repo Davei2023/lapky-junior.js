@@ -44,7 +44,7 @@ function createMarkupCategories(arr) {
 }
 let page = 1;
 let limit = 0;
-let categoryId = null;
+let categoryId = 'animals';
 function handleDeskChange(e) {
   if (e.matches) {
     return (limit = 9);
@@ -60,9 +60,10 @@ async function createAnimalsCards() {
     params: {
       page,
       limit,
-      categoryId,
+      // categoryId,
     },
   });
+  console.log(data);
 
   return data;
 }
