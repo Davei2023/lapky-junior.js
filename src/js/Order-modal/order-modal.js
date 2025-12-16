@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (!backdrop || !modal) {
-    console.error('❌ Order modal not found in DOM');
+    console.error(' Order modal not found in DOM');
     return;
   }
 
@@ -28,13 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
     form?.reset();
   }
 
-  // ❌ НЕ відкриваємо автоматично
+  //  НЕ відкриваємо автоматично
   // openOrderModal(); ← ВАЖЛИВО: ЦЕ ВИДАЛИТИ
 
-  // 🔓 ВІДКРИТТЯ ДЛЯ ТЕСТУ З КОНСОЛІ
+  //  ВІДКРИТТЯ ДЛЯ ТЕСТУ З КОНСОЛІ
   window.openOrderModal = openOrderModal;
 
-  // ❌ Закриття
+  // Закриття
   closeBtn?.addEventListener('click', closeOrderModal);
 
   backdrop.addEventListener('click', e => {
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeOrderModal();
   });
 
-  // 📤 Сабміт
+  // Сабміт
   form?.addEventListener('submit', e => {
     e.preventDefault();
     alert('submit test');
