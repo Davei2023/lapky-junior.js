@@ -44,7 +44,7 @@
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="modulepreload" crossorigin href="/lapky-junior.js/assets/vendor-BV-8v0lm.js">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/vendor-W1qV8qBY.css">
-    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-LM4Ss4Nn.css">
+    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-C9V8gLEl.css">
   </head>
   <body>
     <header class="header">
@@ -422,7 +422,52 @@
 </div>
     </section>
     
-    
+    <div class="modal-backdrop hidden" id="petModalBackdrop">
+  <div class="modal-container" id="petModalContainer">
+    <button class="modal-close-btn" id="modalCloseBtn" type="button">
+      <svg class="close-svg" width="24" height="24">
+        <use href="../img/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+
+    <div class="modal-content">
+      <div class="modal-image-wrapper">
+        <img class="modal-image" id="modalImage" src="" alt="" />
+      </div>
+
+      <div class="modal-info">
+        <div class="modal-header">
+          <span class="modal-species" id="modalSpecies"></span>
+          <h2 class="modal-name" id="modalName"></h2>
+          <p class="modal-age-gender">
+            <span id="modalAge"></span>
+            <span id="modalGender"></span>
+          </p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Опис:</h3>
+          <p class="modal-description" id="modalDescription"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Здоров'я:</h3>
+          <p class="modal-health" id="modalHealth"></p>
+        </div>
+
+        <div class="modal-section">
+          <h3 class="modal-section-title">Поведінка:</h3>
+          <p class="modal-behavior" id="modalBehavior"></p>
+        </div>
+
+        <button class="modal-adopt-btn" id="modalAdoptBtn" type="button">
+          Взяти додому
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
     
     <footer class="footer">
     <div class="container footer-desc">
