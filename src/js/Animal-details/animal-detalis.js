@@ -37,15 +37,12 @@ function openPetModal(animalId, animalsStore) {
   modalImage.src = animal.image;
   modalImage.alt = animal.name;
 
-  // Display first category or species
-  const categoryName = animal.species;
-  modalSpecies.textContent = categoryName;
+  modalSpecies.textContent = animal.species;
 
   modalName.textContent = animal.name;
   modalAge.textContent = animal.age;
   modalGender.textContent = animal.gender;
 
-  // Use description fields or fallback to behavior
   modalDescription.textContent = animal.description || 'Інформація відсутня';
   modalHealth.textContent =
     animal.healthStatus || "Інформація про здоров'я відсутня";
@@ -60,24 +57,11 @@ function openPetModal(animalId, animalsStore) {
   modalCloseBtn.focus();
 }
 
-/**
- * Closes the pet modal
- */
+// Closes the pet modal
 function closePetModal() {
   modalBackdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  currentAnimalId = null;
-}
-
-/**
- * Opens the adoption form modal
- * This function should open your adoption form modal
- */
-function openAdoptionModal() {
-  closePetModal();
-  // TODO: Implement adoption form modal opening
-  console.log('Opening adoption form for animal:', currentAnimalId);
-  // Example: openAdoptFormModal(currentAnimalId);
+  // currentAnimalId = null;
 }
 
 // Event Listeners
@@ -105,7 +89,10 @@ document.addEventListener('keydown', event => {
 });
 
 // Adopt button click
-modalAdoptBtn.addEventListener('click', openAdoptionModal);
+modalAdoptBtn.addEventListener('click', () => {
+  closePetModal();
+  console.log('Opening adoption form for animal:', currentAnimalId);
+  openOrderModal();
+});
 
-// Export functions for use in main script
-export { openPetModal, closePetModal, openAdoptionModal };
+export { openPetModal };
