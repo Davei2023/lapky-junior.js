@@ -44,7 +44,7 @@
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="modulepreload" crossorigin href="/lapky-junior.js/assets/vendor-BV-8v0lm.js">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/vendor-W1qV8qBY.css">
-    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-D3bez5cI.css">
+    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-DzenkJpD.css">
   </head>
   <body>
     <header class="header">
@@ -61,7 +61,7 @@
             <a href="#pets-list-section" class="header-nav-link">Знайди друга</a>
           </li>
           <li class="header-nav-item">
-            <a href="#about-se" class="header-nav-link">Про нас</a>
+            <a href="#About-Us-Section" class="header-nav-link">Про нас</a>
           </li>
           <li class="header-nav-item">
             <a href="#faq-sect" class="header-nav-link">Часті запитання</a>
@@ -97,7 +97,7 @@
           <a href="#pets-list-section" class="header-modal-link">Знайди друга</a>
         </li>
         <li class="header-modal-item">
-          <a href="#about-se" class="header-modal-link">Про нас</a>
+          <a href="#About-Us-Section" class="header-modal-link">Про нас</a>
         </li>
         <li class="header-modal-item">
           <a href="#faq-sect" class="header-modal-link">Часті запитання</a>
@@ -150,8 +150,8 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img
-            src="/lapky-junior.js/assets/first-table-C8qIbk56.png"
-            srcset="/lapky-junior.js/assets/first-table-C8qIbk56.png 1x, /lapky-junior.js/assets/first-table-C8qIbk56.png 2x"
+            src="./img/About-Us/mobile/first-mobile.png"
+            srcset="./img/About-Us/table/first-table.png 1x, ./img/About-Us/PC/first-desktop.png 2x"
             alt="Про нас"
           />
           <p class="about-text">
@@ -161,8 +161,8 @@
 
         <div class="swiper-slide">
           <img
-            src="/lapky-junior.js/assets/sekond-table-D8FPAuWY.png"
-            srcset="/lapky-junior.js/assets/sekond-table-D8FPAuWY.png 1x, /lapky-junior.js/assets/sekond-table-D8FPAuWY.png 2x"
+            src="./img/About-Us/mobile/sekond-mobile.png"
+            srcset="./img/About-Us/table/sekond-table.png 1x, ./img/About-Us/PC/sekond-desktop.png 2x"
             alt="Наші підопічні"
           />
           <p class="about-text">
@@ -171,8 +171,8 @@
         </div>
         <div class="swiper-slide">
           <img
-            src="/lapky-junior.js/assets/and-table-VH0t3uXq.png"
-            srcset="/lapky-junior.js/assets/and-table-VH0t3uXq.png 1x, /lapky-junior.js/assets/and-table-VH0t3uXq.png 2x"
+            src="./img/About-Us/mobile/and-mobile.png"
+            srcset="./img/About-Us/table/and-table.png 1x, ./img/About-Us/PC/and-desktop.png 2x"
             alt="команда ветеринарів"
           />
           <p class="about-text">
@@ -181,8 +181,8 @@
         </div>
         <div class="swiper-slide">
           <img
-            src="/lapky-junior.js/assets/firstand-table-B4mJReZh.png"
-            srcset="/lapky-junior.js/assets/firstand-table-B4mJReZh.png 1x, /lapky-junior.js/assets/firstand-table-B4mJReZh.png 2x"
+            src="./img/About-Us/mobile/firstand-mobile.png"
+            srcset="./img/About-Us/table/firstand-table.png 1x, ./img/About-Us/PC/firstand-desktop.png 2x"
             alt="Кожна тварина"
           />
           <p class="about-text">
@@ -191,8 +191,8 @@
         </div>
         <div class="swiper-slide">
           <img
-            src="/lapky-junior.js/assets/sekondand-table-CCMnkfKd.png"
-            srcset="/lapky-junior.js/assets/sekondand-table-CCMnkfKd.png 1x, /lapky-junior.js/assets/sekondand-table-CCMnkfKd.png 2x"
+            src="./img/About-Us/mobile/sekondand-mobile.png"
+            srcset="./img/About-Us/table/sekondand-table.png 1x, ./img/About-Us/PC/sekondand-desktop.png 2x"
             alt="Ваша допомога"
           />
           <p class="about-text">
@@ -426,7 +426,7 @@
   <div class="modal-container" id="petModalContainer">
     <button class="modal-close-btn" id="modalCloseBtn" type="button">
       <svg class="close-svg" width="24" height="24">
-        <use href="../img/icons.svg#icon-close"></use>
+        <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-close"></use>
       </svg>
     </button>
 
@@ -445,6 +445,15 @@
           </p>
         </div>
 
+        <button
+          class="modal-adopt-btn modal-adopt-btn--tablet"
+          data-modal-adopt
+          id="modalAdoptBtn"
+          type="button"
+        >
+          Взяти додому
+        </button>
+
         <div class="modal-section">
           <h3 class="modal-section-title">Опис:</h3>
           <p class="modal-description" id="modalDescription"></p>
@@ -460,7 +469,12 @@
           <p class="modal-behavior" id="modalBehavior"></p>
         </div>
 
-        <button class="modal-adopt-btn" id="modalAdoptBtn" type="button">
+        <button
+          class="modal-adopt-btn modal-adopt-btn--default"
+          data-modal-adopt
+          id="modalAdoptBtn"
+          type="button"
+        >
           Взяти додому
         </button>
       </div>
