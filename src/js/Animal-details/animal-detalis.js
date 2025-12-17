@@ -2,7 +2,7 @@
 const modalBackdrop = document.getElementById('petModalBackdrop');
 const modalContainer = document.getElementById('petModalContainer');
 const modalCloseBtn = document.getElementById('modalCloseBtn');
-const modalAdoptBtn = document.getElementById('modalAdoptBtn');
+const modalAdoptBtns = document.querySelectorAll('[data-modal-adopt]');
 
 // Modal Content Elements
 const modalImage = document.getElementById('modalImage');
@@ -61,7 +61,6 @@ function openPetModal(animalId, animalsStore) {
 function closePetModal() {
   modalBackdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  // currentAnimalId = null;
 }
 
 // Event Listeners
@@ -89,10 +88,12 @@ document.addEventListener('keydown', event => {
 });
 
 // Adopt button click
-modalAdoptBtn.addEventListener('click', () => {
-  closePetModal();
-  console.log('Opening adoption form for animal:', currentAnimalId);
-  openOrderModal();
+modalAdoptBtns.forEach(button => {
+  button.addEventListener('click', () => {
+    closePetModal();
+    console.log('Opening adoption form for animal:', currentAnimalId);
+    openOrderModal();
+  });
 });
 
 export { openPetModal };
