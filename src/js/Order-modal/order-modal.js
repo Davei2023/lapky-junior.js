@@ -91,23 +91,3 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ========= EXPORT (для іншої модалки) ========= */
   window.openOrderModal = openModal;
 });
-
-// function showError(input, message) {
-//   input.classList.add('is-error');
-
-//   let error = input.parentElement.querySelector('.error-text');
-//   if (!error) {
-//     error = document.createElement('span');
-//     error.className = 'error-text';
-//     input.parentElement.appendChild(error);
-//   }
-
-//   error.textContent = message;
-// }
-
-// function clearError(input) {
-//   input.classList.remove('is-error');
-
-//   const error = input.parentElement.querySelector('.error-text');
-//   if (error) error.remove();
-// }
