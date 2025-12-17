@@ -24,7 +24,6 @@
   position: relative;
   border-radius: 8px;
   width: 335px;
-  height: 1012px;
   overflow-y: auto; /*можливість скролу модалки */
   animation: modalSlideIn 0.3s ease;
   background-color: #f6f4f1;
@@ -194,7 +193,6 @@ body.modal-open {
 @media (min-width: 768px) {
   .modal-container {
     width: 704px;
-    height: 685px;
   }
 
   .modal-content {
@@ -230,7 +228,6 @@ body.modal-open {
 @media (min-width: 1440px) {
   .modal-container {
     width: 1312px;
-    height: 650px;
   }
 
   .modal-content {
