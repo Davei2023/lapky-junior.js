@@ -1,0 +1,179 @@
+.feedback-section {
+    background-color: #f6f4f1;
+    padding: 64px 20px;
+}
+
+.feedback-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #02060a;
+    margin-bottom: 24px;
+}
+
+.feedback-subtitle {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #02060a;
+    margin-bottom: 40px;
+}
+
+
+.feedback-swiper {
+    position: static;
+}
+
+.feedback-swiper .swiper-slide {
+  
+}
+
+.feedback-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+/* Пагинация в левый край */
+.feedback-pagination {
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    gap: 8px;
+    left: 0 !important;
+    transform: none !important;
+}
+
+.feedback-pagination .swiper-pagination-bullet {
+    background-color: #c3b49d;
+    opacity: 1;
+    margin: 0 !important;
+}
+
+.feedback-pagination .swiper-pagination-bullet-active {
+    background-color: #02060a;
+}
+
+/* Карточка отзыва */
+.feedback-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+    
+}
+
+.feedback-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #02060a;
+    
+    
+}
+
+.feedback-author {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #02060a;
+    margin-top: auto;
+    
+}
+
+.feedback-navigation {
+    display: flex;
+    gap: 16px;
+}
+
+/* Звезды рейтинга */
+.feedback-card .stars {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1;
+    position: relative;
+    color: #ccc;
+    width: 116px;
+}
+
+.feedback-card .stars::before {
+    content: '★★★★★';
+    display: block;
+}
+
+.feedback-card .stars span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #02060A;
+    display: block;
+}
+
+.feedback-card .stars span::before {
+    content: '★★★★★';
+    display: block;
+}
+
+/* Кнопки навигации */
+.custom-btn {
+    border: 1px solid #c3b49d;
+    border-radius: 8px;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    background-color: #eee9e3;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.custom-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.custom-btn:hover:not(:disabled) {
+    background-color: #e0d8cf;
+    border-color: #02060a;
+}
+@media screen and (min-width: 768px) {
+
+
+}
+
+@media screen and (min-width: 1440px) {
+
+.feedback-section{
+    padding: 80px 64px;
+}
+.feedback-title {
+    font-weight: 700;
+        font-size: 48px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #02060a;
+}
+.feedback-subtitle{
+font-size: 18px;
+}
+.feedback-text{
+    font-size: 20px;
+}
+.feedback-card{
+    max-width: 640px;
+        height: 256px;
+}
+
+}
