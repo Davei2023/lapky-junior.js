@@ -24,7 +24,6 @@
   position: relative;
   border-radius: 8px;
   width: 335px;
-  height: 1012px;
   overflow-y: auto; /*можливість скролу модалки */
   animation: modalSlideIn 0.3s ease;
   background-color: #f6f4f1;
@@ -162,20 +161,27 @@
   line-height: 1.5;
   color: #fff;
   cursor: pointer;
-  /* transition: background-color 0.3s ease, transform 0.2s ease; */
+  transition: background-color 0.3s ease, transform 0.2s ease;
   align-self: flex-start;
 }
 
 .modal-adopt-btn:hover {
+  border: 1px solid #88765c;
   color: #02060a;
   background-color: #eee9e3;
 }
 
 .modal-adopt-btn:focus {
+  border: 1px solid #88765c;
   color: #02060a;
   box-shadow: inset 0 4px 6px -2px rgba(0, 0, 0, 0.03),
     inset 0 12px 16px -4px rgba(0, 0, 0, 0.08);
   background-color: #eee9e3;
+}
+
+/* Ховаємо tablet кнопку */
+.modal-adopt-btn--tablet {
+  display: none;
 }
 
 /* Prevent body scroll when modal is open */
@@ -187,7 +193,6 @@ body.modal-open {
 @media (min-width: 768px) {
   .modal-container {
     width: 704px;
-    height: 685px;
   }
 
   .modal-content {
@@ -204,13 +209,25 @@ body.modal-open {
     width: 304px;
     height: 450px;
   }
+
+  .modal-adopt-btn {
+    width: 304px;
+    height: 45px;
+  }
+
+  .modal-adopt-btn--tablet {
+    display: block;
+  }
+
+  .modal-adopt-btn--default {
+    display: none;
+  }
 }
 
 /* desktop */
 @media (min-width: 1440px) {
   .modal-container {
     width: 1312px;
-    height: 650px;
   }
 
   .modal-content {
@@ -249,8 +266,15 @@ body.modal-open {
     font-size: 16px;
   }
 
+  .modal-adopt-btn--tablet {
+    display: none;
+  }
+
+  .modal-adopt-btn--default {
+    display: block;
+  }
+
   .modal-adopt-btn {
-    padding: 12px auto;
     width: 576px;
     height: 48px;
     font-size: 16px;
