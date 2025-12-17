@@ -3,6 +3,9 @@ import iziToast from 'izitoast';
 // Додатковий імпорт стилів
 import 'izitoast/dist/css/iziToast.min.css';
 
+//додання логіки модалки
+import { openPetModal } from '../Animal-details/animal-detalis';
+
 const BASE_URL = 'https://paw-hut.b.goit.study/api/';
 const CATECORIES_URL = 'categories';
 const ANIMALS_URL = 'animals';
@@ -23,6 +26,14 @@ function showLoader() {
 function hideLoader() {
   loader.classList.add('hidden');
 }
+function showmoreBtn() {
+  moreBtn.classList.remove('hidden');
+}
+
+function hidemoreBtn() {
+  moreBtn.classList.add('hidden');
+}
+hidemoreBtn();
 
 async function createCategories() {
   const { data } = await axios(`${BASE_URL}${CATECORIES_URL}`);
@@ -74,6 +85,7 @@ createAnimalsCards()
       'beforeend',
       createMarkupAnimals(data.animals)
     );
+    showmoreBtn();
   })
   .catch(error =>
     iziToast.error({
@@ -83,25 +95,43 @@ createAnimalsCards()
     })
   );
 
+// Сховище для тваринок
+const animalsStore = new Map();
+
+// додаю зберігання об'єкту тваринки з id
 function createMarkupAnimals(arr) {
+  arr.forEach(animal => {
+    animalsStore.set(animal._id, animal);
+  });
   return arr
     .map(
-      ({ image, name, species, categories, age, gender, behavior }) =>
+      ({ _id, image, name, species, categories, age, gender, behavior }) =>
         `<li class="animals-item"><img class="animals-img" src="${image}" alt="${species}"/><div class="animals-item-container"><p class="animals-subtitle">${species}</p><h2 class="animals-title">${name}</h2><div class="animals-sublist">${categories
           .map(({ name }) => `<h3 class="animals-categories">${name}</h3>`)
           .join(
             ''
           )}</div><div class="animals-textlist"><p class="animals-subtitle">${age}</p><p class="animals-subtitle">${gender}</p></div>
           <p class="animals-text">${behavior}</p></div>
-          
-          <button class="animals-btn">Дізнатись більше</button></li>`
+
+          <button type= "button" class="animals-btn" data-animal-id="${_id}">Дізнатись більше</button></li>`
     )
     .join('');
 }
 
+// логіка модалки при кліку на кнопку
+allAnimals.addEventListener('click', event => {
+  if (event.target.classList.contains('animals-btn')) {
+    const animalId = event.target.dataset.animalId;
+    if (animalId) {
+      openPetModal(animalId, animalsStore);
+    }
+  }
+});
+
 moreBtn.addEventListener('click', handleClickMurcup);
 async function handleClickMurcup(event) {
   page++;
+  hidemoreBtn();
   showLoader();
   try {
     const data = await createAnimalsCards(page);
@@ -121,6 +151,7 @@ async function handleClickMurcup(event) {
       });
       event.target.blur();
       hideLoader();
+      showmoreBtn();
     }
     if (allAnimals.children.length >= data.totalItems) {
       moreBtn.disabled = true;
@@ -144,18 +175,21 @@ listCategories.addEventListener('click', handleClickCategoriesMurkup);
 
 async function handleClickCategoriesMurkup(event) {
   event.preventDefault();
+  hidemoreBtn();
   showLoader();
-  activeCategories.classList.remove('active');
-  const removeActive = listCategories.querySelectorAll('.active');
-  removeActive.forEach(child => {
-    child.classList.remove('active');
-  });
+
   page = 1;
   moreBtn.disabled = false;
   moreBtn.classList.remove('disabled');
-  event.target.classList.add('active');
+
   if (!(event.target === event.currentTarget)) {
     allAnimals.innerHTML = '';
+    activeCategories.classList.remove('active');
+    const removeActive = listCategories.querySelectorAll('.active');
+    removeActive.forEach(child => {
+      child.classList.remove('active');
+    });
+    event.target.classList.add('active');
     categoryId = event.target.dataset.id;
 
     try {
@@ -165,6 +199,7 @@ async function handleClickCategoriesMurkup(event) {
         createMarkupAnimals(data.animals)
       );
       hideLoader();
+      showmoreBtn();
     } catch (error) {
       iziToast.error({
         message: 'Упс, щось пішло не так. Спробуйте ще раз!',
@@ -172,6 +207,7 @@ async function handleClickCategoriesMurkup(event) {
         color: 'red',
       });
       hideLoader();
+      showmoreBtn();
     }
   }
 }
