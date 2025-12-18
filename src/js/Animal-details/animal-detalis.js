@@ -1,3 +1,5 @@
+import { lockScroll, unlockScroll } from '../utils/scroll-lock.js';
+
 // Modal Elements
 const modalBackdrop = document.getElementById('petModalBackdrop');
 const modalContainer = document.getElementById('petModalContainer');
@@ -16,6 +18,12 @@ const modalBehavior = document.getElementById('modalBehavior');
 
 // Store current animal data
 let currentAnimalId = null;
+
+function handleEscapeKey(event) {
+  if (event.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
+    closePetModal();
+  }
+}
 
 /**
  * Opens the modal with animal data
@@ -55,12 +63,20 @@ function openPetModal(animalId, animalsStore) {
 
   // Set focus to close button for accessibility
   modalCloseBtn.focus();
+
+  // ESC key press
+  document.addEventListener('keydown', handleEscapeKey);
+  lockScroll();
 }
 
 // Closes the pet modal
 function closePetModal() {
   modalBackdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
+
+  // ESC key press
+  document.removeEventListener('keydown', handleEscapeKey);
+  unlockScroll();
 }
 
 // Event Listeners
@@ -80,19 +96,12 @@ modalContainer.addEventListener('click', event => {
   event.stopPropagation();
 });
 
-// ESC key press
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
-    closePetModal();
-  }
-});
-
 // Adopt button click
 modalAdoptBtns.forEach(button => {
   button.addEventListener('click', () => {
     closePetModal();
     console.log('Opening adoption form for animal:', currentAnimalId);
-    openOrderModal();
+    openOrderModal(currentAnimalId);
   });
 });
 
