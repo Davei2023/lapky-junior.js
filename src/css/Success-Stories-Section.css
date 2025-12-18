@@ -1,0 +1,162 @@
+.success-stories {
+  background-color: white;
+}
+
+.stories-title {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.success-stories__title {
+  font-weight: 700;
+  font-size: 41px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #02060a;
+  margin-bottom: 24px;
+}
+
+.success-stories__subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #02060a;
+}
+
+.story-card {
+  width: 100%;
+}
+
+.story-rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+.story-rating .star {
+  width: 20px;
+  height: 19px;
+  fill: #1c1c1c;
+}
+
+.story-text {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.story-author {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* controls */
+.slider-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.slider-pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: #cfcfcf;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #1c1c1c;
+}
+
+.slider-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.slider-btn {
+  border: 1px solid #c3b49d;
+  border-radius: 8px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  background-color: #eee9e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.slider-icon {
+  width: 20px;
+  height: 20px;
+  stroke: #1c1c1c;
+  fill: none;
+}
+
+.slider-btn:hover {
+  background-color: transparent;
+}
+
+.slider-btn:hover .slider-icon {
+  stroke: #02060a;
+}
+
+.slider-btn.is-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.success-stories-swiper {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+/* ========== TABLET ≥ 768px ========== */
+@media (min-width: 768px) {
+  .success-stories__title {
+    font-size: 36px;
+  }
+  .story-card{
+    max-width: 100%;
+  }
+}
+
+/* ========== DESKTOP ≥ 1400px ========== */
+@media (min-width: 1440px) {
+  .success-stories__title {
+    font-size: 48px;
+  }
+
+  .success-stories__subtitle {
+    font-size: 18px;
+  }
+
+  .story-text {
+    font-size: 20px;
+  }
+
+  .story-author {
+    font-size: 16px;
+  }
+  .story-card{
+    width: 100%;
+    max-width: 920px;
+  }
+}
