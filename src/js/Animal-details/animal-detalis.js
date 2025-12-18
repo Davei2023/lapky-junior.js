@@ -19,10 +19,26 @@ const modalBehavior = document.getElementById('modalBehavior');
 // Store current animal data
 let currentAnimalId = null;
 
+function handleBackdropClick(event) {
+  if (event.target === modalBackdrop) {
+    closePetModal();
+  }
+}
+
+function handleModalClick(event) {
+  event.stopPropagation();
+}
+
 function handleEscapeKey(event) {
   if (event.key === 'Escape' && !modalBackdrop.classList.contains('hidden')) {
     closePetModal();
   }
+}
+
+function handleAdoptClick() {
+  closePetModal();
+  console.log('Opening adoption form for animal:', currentAnimalId);
+  openOrderModal(currentAnimalId);
 }
 
 /**
@@ -63,10 +79,16 @@ function openPetModal(animalId, animalsStore) {
 
   // Set focus to close button for accessibility
   modalCloseBtn.focus();
-
-  // ESC key press
-  document.addEventListener('keydown', handleEscapeKey);
   lockScroll();
+
+  // Add event listeners when modal opens
+  modalCloseBtn.addEventListener('click', closePetModal);
+  modalBackdrop.addEventListener('click', handleBackdropClick);
+  modalContainer.addEventListener('click', handleModalClick);
+  document.addEventListener('keydown', handleEscapeKey);
+  modalAdoptBtns.forEach(button => {
+    button.addEventListener('click', handleAdoptClick);
+  });
 }
 
 // Closes the pet modal
@@ -74,35 +96,17 @@ function closePetModal() {
   modalBackdrop.classList.add('hidden');
   document.body.classList.remove('modal-open');
 
-  // ESC key press
+  // Remove event listeners when modal closes
+  modalCloseBtn.removeEventListener('click', closePetModal);
+  modalBackdrop.removeEventListener('click', handleBackdropClick);
+  modalContainer.removeEventListener('click', handleModalClick);
   document.removeEventListener('keydown', handleEscapeKey);
+
+  modalAdoptBtns.forEach(button => {
+    button.removeEventListener('click', handleAdoptClick);
+  });
+
   unlockScroll();
 }
-
-// Event Listeners
-
-// Close button click
-modalCloseBtn.addEventListener('click', closePetModal);
-
-// Backdrop click (click outside modal)
-modalBackdrop.addEventListener('click', event => {
-  if (event.target === modalBackdrop) {
-    closePetModal();
-  }
-});
-
-// Prevent closing when clicking inside modal
-modalContainer.addEventListener('click', event => {
-  event.stopPropagation();
-});
-
-// Adopt button click
-modalAdoptBtns.forEach(button => {
-  button.addEventListener('click', () => {
-    closePetModal();
-    console.log('Opening adoption form for animal:', currentAnimalId);
-    openOrderModal(currentAnimalId);
-  });
-});
 
 export { openPetModal };
