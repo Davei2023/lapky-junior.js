@@ -3,7 +3,7 @@
   text-align: center;
 }
 .footer-desc {
-  padding: 48px 32px;
+  padding: 48px 20px;
 }
 .footer-container {
   display: flex;
@@ -12,24 +12,27 @@
 }
 
 .footer-item {
-  margin: 0.7em;
+  margin: 0 0.7em; 
   display: flex;
   flex-direction: column;
   align-items: center;
   font-weight: 600;
+  margin-top: 32px;
 }
 
 /* соц іконки */
 .footer-media-item {
   display: inline-block;
-  margin: 0.5em;
+  margin: 0 0.5em;
 }
 
 /* посилання з підкресленням */
 .footer-link {
   position: relative;
   text-decoration: none;
-  color: inherit;
+  color: #02060a;
+  font-size: 14px;
+  
 }
 
 .footer-link::after {
@@ -52,10 +55,10 @@
 /* текст з лінією */
 .footer-text {
   position: relative;
-  padding-top: 1em;
-  font-size: 0.75rem;
+  padding-top: 2.0em;
   color: #2b2b2b;
   margin-top: 80px;
+  font-size: 14px;
 
 }
 
@@ -64,7 +67,6 @@
   position: absolute;
   top: 0;
   left: 0;
-
   width: 100%;
   height: 1px;
   background-color: rgba(43, 43, 43, 0.2);
@@ -79,21 +81,25 @@
 .footer-item  {
   display: inline-block;
 }
+.footer-desc {
+    padding: 48px 32px;
+  }
 }
 
 
 @media screen and (min-width: 1440px) {
-  .footer-desc {
-    padding: 64px 64px;
-  }
-  .footer-link {
-    position: relative;
-    text-decoration: none;
-  }
-  .footer-item {
-    display: inline-block;
-    margin-top: 32px;
-  }
+.footer-desc {
+  padding: 64px 64px;
+}
+.footer-link {
+  position: relative;
+  text-decoration: none;
+}
+.footer-item {
+  display: inline-block;
+  margin-top: 32px;
+    
+}
   
   
 }
