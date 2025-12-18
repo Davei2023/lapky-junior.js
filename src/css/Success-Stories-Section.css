@@ -31,18 +31,25 @@
   width: 100%;
 }
 
-.story-rating {
+/* .story-rating {
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
   margin-top: 32px;
+} */
+
+.star-rating {
+  --star-size: 16px;
+  --star-color: #d9d9d9;
+  --star-background: #1c1c1c;
+  margin-bottom: 12px;
 }
 
-.story-rating .star {
+/* .story-rating .star {
   width: 20px;
   height: 19px;
   fill: #1c1c1c;
-}
+} */
 
 .story-text {
   font-size: 18px;

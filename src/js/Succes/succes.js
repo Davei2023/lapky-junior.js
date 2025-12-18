@@ -1,14 +1,31 @@
 import { getFeedbacks } from '../../api/feedbacks';
+import Raty from 'raty-js';
 
 // DOM
 const listEl = document.getElementById('stories-list');
+
+function initRating() {
+  document.querySelectorAll('.rating').forEach(el => {
+    if (el.dataset.inited) return;
+
+    new Raty(el, {
+      readOnly: true,
+      score: Number(el.dataset.rate),
+      half: true,
+      starOn: '/img/star-filled.svg',
+      starOff: '/img/star-outline.svg',
+      starHalf: '/img/star-half.svg',
+    }).init();
+
+    el.dataset.inited = 'true';
+  });
+}
 
 /* ---------- Slide template ---------- */
 function createSlide({ rate, description, author }) {
   return `
     <li class="swiper-slide story-card">
-      <div class="story-rating" aria-label="Оцінка ${rate} з 5">
-        ${rate}
+      <div class="star-rating" style="--rating: ${rate}" aria-label="Оцінка ${rate} з 5">
       </div>
       <p class="story-text">${description}</p>
       <p class="story-author">${author}</p>
@@ -32,6 +49,7 @@ async function initSuccessStories() {
       listEl.insertAdjacentHTML('beforeend', createSlide(item));
     });
 
+    initRating();
     initSwiper();
   } catch (error) {
     console.error('Failed to load feedbacks:', error.message);
