@@ -44,7 +44,7 @@
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="modulepreload" crossorigin href="/lapky-junior.js/assets/vendor-BV-8v0lm.js">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/vendor-W1qV8qBY.css">
-    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-CyXdF5Qe.css">
+    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-B-N9W8Cy.css">
   </head>
   <body>
     <header class="header">
@@ -633,22 +633,31 @@
     <form class="order-form" id="orderForm">
       <label class="order-form__field">
         <span class="order-form__info">Імʼя*</span>
-        <input class="order-form__input" name="name" required />
+        <input
+          class="order-form__input"
+          name="name"
+          placeholder="Ім'я"
+          required
+        />
       </label>
 
       <label class="order-form__field">
         <span class="order-form__info">Телефон*</span>
         <input
           class="order-form__input"
-          class="is-error"
           name="phone"
+          placeholder="380"
           required
         />
       </label>
 
       <label class="order-form__field">
         <span class="order-form__info">Коментар</span>
-        <textarea class="order-form__comment" name="comment"></textarea>
+        <textarea
+          class="order-form__comment"
+          name="comment"
+          placeholder="Напишіть ваш коментар"
+        ></textarea>
       </label>
 
       <button type="submit" class="order-form__submit">Надіслати</button>
