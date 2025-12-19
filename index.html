@@ -44,7 +44,7 @@
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="modulepreload" crossorigin href="/lapky-junior.js/assets/vendor-DQFL29Lm.js">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/vendor-W1qV8qBY.css">
-    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-CdRAnXka.css">
+    <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-B0y0YVma.css">
   </head>
   <body>
     <header class="header">
@@ -144,29 +144,24 @@
   </div>
 </section>
 
-    <!-- Davyd Bohomaz -->
-<section class="About-Us-Section" id="About-Us-Section">
+    <section class="About-Us-Section" id="About-Us-Section">
   <div class="container About-container">
     <h1 class="About-wrap">Чому Хатинка Лапок</h1>
 
+    <!-- SLIDER -->
     <div class="image-wrapper about-swiper">
       <div class="swiper-wrapper">
         <!-- Slide 1 -->
         <div class="swiper-slide">
           <picture>
-            <!-- Desktop -->
             <source
               media="(min-width: 1280px)"
               srcset="/lapky-junior.js/assets/first-desktop@1x-C6NmGBoD.jpg 1x, /lapky-junior.js/assets/first-desktop2x-D16Vrhcs.jpg 2x"
             />
-
-            <!-- Tablet -->
             <source
               media="(min-width: 768px)"
               srcset="/lapky-junior.js/assets/first-table@1x-BspwK72B.jpg 1x, /lapky-junior.js/assets/first-table2x-Djid31e3.jpg 2x"
             />
-
-            <!-- Mobile -->
             <img
               src="/lapky-junior.js/assets/first-mobile@1x-B4DikFhG.jpg"
               srcset="/lapky-junior.js/assets/first-mobile2x-CYMwgF57.jpg 2x"
@@ -285,27 +280,38 @@
         </div>
       </div>
 
-      <!-- Навігація -->
-      <button
-        class="about-arrow about-arrow-left swiper-button-prev"
-        aria-label="Попередній слайд"
-      >
-        <svg width="16" height="16">
+      <button class="about-arrow about-desk-prev" aria-label="Попередній слайд">
+        <svg width="16" height="16" aria-hidden="true">
           <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-arrow_back"></use>
         </svg>
       </button>
 
-      <button
-        class="about-arrow about-arrow-right swiper-button-next"
-        aria-label="Наступний слайд"
-      >
-        <svg width="16" height="16">
+      <button class="about-arrow about-desk-next" aria-label="Наступний слайд">
+        <svg width="16" height="16" aria-hidden="true">
           <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-arrow_forward"></use>
         </svg>
       </button>
 
-      <!-- Пагінація -->
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination about-desk-pagination"></div>
+    </div>
+
+    <!-- MOBILE: controls below -->
+    <div class="about-mobile-controls">
+      <div class="swiper-pagination about-mob-pagination"></div>
+
+      <div class="about-mobile-buttons">
+        <button class="about-arrow about-mob-prev" aria-label="Попередній слайд">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-arrow_back"></use>
+          </svg>
+        </button>
+
+        <button class="about-arrow about-mob-next" aria-label="Наступний слайд">
+          <svg width="16" height="16" aria-hidden="true">
+            <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-arrow_forward"></use>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
