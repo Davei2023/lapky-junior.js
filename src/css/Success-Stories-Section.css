@@ -31,6 +31,10 @@
   color: #02060a;
 }
 
+.swiper-wrapper{
+  margin-bottom: 40px;
+}
+
 /* Card */
 .story-card {
   width: 100%;
@@ -40,13 +44,20 @@
 .story-rating {
   display: flex;
   gap: 4px;
+  align-items: center;
   margin: 32px 0 12px;
 }
 
-.story-rating .star {
+.story-rating svg,
+.story-rating img {
+  display: block;
   width: 20px;
   height: 19px;
-  fill: #1c1c1c;
+  stroke: #02060a;
+}
+
+.story-rating .raty-star-off{
+  opacity: 0.3;
 }
 
 /* Text */
@@ -59,6 +70,7 @@
 .story-author {
   font-size: 14px;
   font-weight: 600;
+
 }
 
 /* ===== Slider Controls ===== */
@@ -77,8 +89,8 @@
 }
 
 .dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background-color: #cfcfcf;
   border-radius: 50%;
   cursor: pointer;
@@ -86,6 +98,8 @@
 
 .dot.active {
   background-color: #1c1c1c;
+  width: 10px;
+  height: 10px;
 }
 
 /* Buttons */
@@ -147,9 +161,6 @@
     font-size: 36px;
   }
 
-  .story-card {
-    max-width: 100%;
-  }
 }
 
 /* ===== Desktop ≥ 1440px ===== */
@@ -174,7 +185,4 @@
     font-size: 16px;
   }
 
-  .story-card {
-    max-width: 920px;
-  }
 }

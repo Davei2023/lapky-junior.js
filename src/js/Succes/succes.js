@@ -4,6 +4,9 @@ import Raty from 'raty-js';
 import Swiper from 'swiper';
 import 'swiper/css';
 
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const listEl = document.getElementById('stories-list');
 
 if (!listEl) {
@@ -11,45 +14,34 @@ if (!listEl) {
 }
 
 /* ---------- Rating (Raty) ---------- */
+
 function initRating() {
-  document.querySelectorAll('.rating').forEach(el => {
+  document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
+    console.log(rate);
 
     new Raty(el, {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: './img/star-filled.svg',
-      starOff: './img/star-outline.svg',
-      starHalf: './img/star-half.svg',
+      starOn: '/img/star-filled.svg',
+      starOff: '/img/star-outline.svg',
+      starHalf: '/img/star-half.svg',
     }).init();
 
     el.dataset.inited = 'true';
   });
 }
 
-/* ---------- Slide template ---------- */
-function escapeHtml(str = '') {
-  return String(str)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
-}
-
-function createSlide({ rate = 0, description = '', author = '' }) {
-  const safeText = escapeHtml(description);
-  const safeAuthor = escapeHtml(author);
-
+function createSlide({ rate, description, author }) {
   return `
-    <li class="swiper-slide story-card">
-      <div class="story-rating rating" data-rate="${rate}" aria-label="Оцінка ${rate} з 5"></div>
-      <p class="story-text">${safeText}</p>
-      <p class="story-author">${safeAuthor}</p>
-    </li>
+    <div class="swiper-slide story-card">
+      <div class="story-rating rating" data-rate="${rate}"  aria-label="Оцінка ${rate} з 5"></div>
+      <p class="story-text">${description}</p>
+      <p class="story-author">${author}</p>
+    </div>
   `;
 }
 
@@ -61,13 +53,15 @@ function initSwiper() {
 
   const SwiperCtor = window.Swiper || Swiper;
   if (!SwiperCtor) {
-    console.error('Swiper is not available. Add Swiper via <script> or install via npm.');
+    console.error(
+      'Swiper is not available. Add Swiper via <script> or install via npm.'
+    );
     return;
   }
 
   swiperInstance = new SwiperCtor('.success-stories-swiper', {
     slidesPerView: 1,
-    spaceBetween: 32,
+    slidesGroup: 2,
     speed: 500,
     autoHeight: true,
 
@@ -85,8 +79,8 @@ function initSwiper() {
     },
 
     breakpoints: {
-      768: { slidesPerView: 2, spaceBetween: 40 },
-      1440: { slidesPerView: 2, spaceBetween: 80 },
+      768: { slidesPerView: 2, spaceBetween: 32 },
+      1440: { slidesPerView: 2, spaceBetween: 32 },
     },
   });
 }
@@ -94,7 +88,7 @@ function initSwiper() {
 /* ---------- Init ---------- */
 async function initSuccessStories() {
   try {
-    const data = await getFeedbacks({ page: 1, limit: 6 });
+    const data = await getFeedbacks({ page: 1, limit: 5 });
 
     const feedbacks =
       data?.results || data?.feedbacks || data?.data?.results || [];
