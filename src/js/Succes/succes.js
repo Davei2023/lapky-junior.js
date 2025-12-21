@@ -1,7 +1,6 @@
 import { getFeedbacks } from '../../api/feedbacks';
 import Raty from 'raty-js';
 
-
 import Swiper from 'swiper';
 import 'swiper/css';
 
@@ -21,10 +20,8 @@ function initRating() {
     if (el.dataset.inited) return;
 
     const rate = Number(el.dataset.rate) || 0;
-    console.log(rate);
-    const m = console.log(true)
+
     new Raty(el, {
-      m,
       readOnly: true,
       score: rate,
       half: true,
