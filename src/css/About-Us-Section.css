@@ -174,6 +174,13 @@
     margin-bottom: 32px;
   }
 
+  .about-overlay-controls .about-desk-prev {
+  left: -28px;
+}
+
+.about-overlay-controls .about-desk-next {
+  right: -28px;
+}
   .about-text {
     left: 32px;
     right: auto;
@@ -184,7 +191,6 @@
     background: transparent;
 
     font-size: 16px;
-    line-height: 1.5;
   }
 
   .about-desk-pagination.swiper-pagination {
@@ -212,8 +218,11 @@
   .about-text {
     left: 63.5px;
     bottom: 64px;
+    font-weight: 400;
     max-width: 548px;
     height: 108px;
+    line-height: 150%;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
   }
 
   .about-desk-pagination.swiper-pagination {
