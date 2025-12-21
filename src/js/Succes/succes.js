@@ -12,19 +12,23 @@ if (!listEl) {
 
 /* ---------- Rating (Raty) ---------- */
 
+const starOnUrl = new URL('./img/star-filled.svg', import.meta.url).href;
+const starOffUrl = new URL('./img/star-outline.svg', import.meta.url).href;
+const starHalfUrl = new URL('./img/star-half.svg', import.meta.url).href;
+
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
-
+    
     const rate = Number(el.dataset.rate) || 0;
-
+ 
     new Raty(el, {
       readOnly: true,
       score: rate,
       half: true,
-      starOn: './img/star-filled.png',
-      starOff: './img/star-outline.png',
-      starHalf: './img/star-half.png',
+      starOn: starOnUrl,
+      starOff: starOffUrl,
+      starHalf: starHalfUrl,
     }).init();
 
     el.dataset.inited = 'true';
