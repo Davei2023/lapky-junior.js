@@ -23,9 +23,9 @@ function initRating() {
       score: rate,
       half: true,
       path: '/img',
-      starOn: 'star-filled.png',
-      starOff: 'star-outline.png',
-      starHalf: 'star-half.png',
+      starOn: './img/star-filled.png',
+      starOff: './img/star-outline.png',
+      starHalf: './img/star-half.png',
     }).init();
 
     el.dataset.inited = 'true';
