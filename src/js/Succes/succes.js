@@ -1,9 +1,5 @@
 import { getFeedbacks } from '../../api/feedbacks';
 import Raty from 'raty-js';
-
-import Swiper from 'swiper';
-import 'swiper/css';
-
 const listEl = document.getElementById('stories-list');
 
 if (!listEl) {
@@ -22,7 +18,6 @@ function initRating() {
     if (el.dataset.inited) return;
     
     const rate = Number(el.dataset.rate) || 0;
- 
     new Raty(el, {
       readOnly: true,
       score: rate,
