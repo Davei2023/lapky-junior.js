@@ -11,11 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('orderForm');
   const petsSection = document.getElementById('pets-list-section');
 
-  if (!backdrop || !modal || !form || !petsSection) return;
+  if (!backdrop || !modal || !closeBtn || !form || !petsSection) return;
 
   let currentAnimalId = null;
+
+  function removeModalListeners() {
+    window.removeEventListener('keydown', handleEscKey);
+    backdrop.removeEventListener('click', handleBackdropClick);
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('is-open');
+    unlockScroll();
+    form.reset();
+    currentAnimalId = null;
+
+    removeModalListeners();
+  }
+
   function handleEscKey(e) {
-    if (e.key === 'Escape') {
+    // можна й без contains('is-open'), бо слухач висить тільки коли модалка відкрита,
+    // але так безпечніше
+    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
       closeModal();
     }
   }
@@ -31,11 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     backdrop.addEventListener('click', handleBackdropClick);
   }
 
-  function removeModalListeners() {
-    window.removeEventListener('keydown', handleEscKey);
-    backdrop.removeEventListener('click', handleBackdropClick);
-  }
-  /* ========= OPEN ========= */
   function openModal(animalId) {
     currentAnimalId = animalId;
     backdrop.classList.add('is-open');
@@ -44,28 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addModalListeners();
   }
 
-  /* ========= CLOSE ========= */
-  function closeModal() {
-    backdrop.classList.remove('is-open');
-    unlockScroll();
-    form.reset();
-    currentAnimalId = null;
-
-    removeModalListeners();
-  }
-
-  /* ========= CLOSE EVENTS ========= */
   closeBtn.addEventListener('click', closeModal);
-
-  backdrop.addEventListener('click', e => {
-    if (e.target === backdrop) closeModal();
-  });
-
-  window.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
-      closeModal();
-    }
-  });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -99,15 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const data = {
-      name,
-      phone,
-      comment,
-      animalId: currentAnimalId,
-    };
-
     try {
-      await createOrder(data);
+      await createOrder({ name, phone, comment, animalId: currentAnimalId });
 
       iziToast.success({
         message: 'Заявку надіслано',
@@ -123,6 +107,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ========= EXPORT ========= */
   window.openOrderModal = openModal;
 });
