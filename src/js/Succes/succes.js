@@ -2,7 +2,7 @@ import { getFeedbacks } from '../../api/feedbacks';
 import Raty from 'raty-js';
 
 import Swiper from 'swiper';
-import 'swiper/css';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const listEl = document.getElementById('stories-list');
 
@@ -16,13 +16,12 @@ const starOnUrl = new URL('../../img/star-filled.svg', import.meta.url).href;
 const starOffUrl = new URL('../../img/star-outline.svg', import.meta.url).href;
 const starHalfUrl = new URL('../../img/star-half.svg', import.meta.url).href;
 
-
 function initRating() {
   document.querySelectorAll('.story-rating').forEach(el => {
     if (el.dataset.inited) return;
-    
+
     const rate = Number(el.dataset.rate) || 0;
- 
+
     new Raty(el, {
       readOnly: true,
       score: rate,
@@ -39,28 +38,21 @@ function initRating() {
 function createSlide({ rate, description, author }) {
   return `
     <div class="swiper-slide story-card">
-      <div class="story-rating rating" data-rate="${rate}"  aria-label="Оцінка ${rate} з 5"></div>
+      <div class="story-rating rating" data-rate="${rate}" aria-label="Оцінка ${rate} з 5"></div>
       <p class="story-text">${description}</p>
       <p class="story-author">${author}</p>
     </div>
   `;
 }
 
-/* ---------- Swiper ---------- */
 let swiperInstance = null;
 
 function initSwiper() {
   if (swiperInstance) return;
 
-  const SwiperCtor = window.Swiper || Swiper;
-  if (!SwiperCtor) {
-    console.error(
-      'Swiper is not available. Add Swiper via <script> or install via npm.'
-    );
-    return;
-  }
+  swiperInstance = new Swiper('.success-stories-swiper', {
+    modules: [Navigation, Pagination],
 
-  swiperInstance = new SwiperCtor('.success-stories-swiper', {
     slidesPerView: 1,
     slidesGroup: 2,
     speed: 500,
@@ -86,7 +78,6 @@ function initSwiper() {
   });
 }
 
-/* ---------- Init ---------- */
 async function initSuccessStories() {
   try {
     const data = await getFeedbacks({ page: 1, limit: 5 });
@@ -98,6 +89,8 @@ async function initSuccessStories() {
       console.error('No feedbacks found');
       return;
     }
+
+    if (!listEl) return;
 
     listEl.innerHTML = '';
     feedbacks.forEach(item => {
