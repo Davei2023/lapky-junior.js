@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentAnimalId = null;
 
+  function removeModalListeners() {
+    window.removeEventListener('keydown', handleEscKey);
+    backdrop.removeEventListener('click', handleBackdropClick);
+  }
+
   function closeModal() {
     backdrop.classList.remove('is-open');
     unlockScroll();
@@ -25,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function handleEscKey(e) {
+    // можна й без contains('is-open'), бо слухач висить тільки коли модалка відкрита,
+    // але так безпечніше
     if (e.key === 'Escape' && backdrop.classList.contains('is-open')) {
       closeModal();
     }
@@ -39,11 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function addModalListeners() {
     window.addEventListener('keydown', handleEscKey);
     backdrop.addEventListener('click', handleBackdropClick);
-  }
-
-  function removeModalListeners() {
-    window.removeEventListener('keydown', handleEscKey);
-    backdrop.removeEventListener('click', handleBackdropClick);
   }
 
   function openModal(animalId) {
@@ -65,27 +67,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const comment = form.comment.value.trim();
 
     if (!name || !phone) {
-      iziToast.error({ message: 'Заповніть обовʼязкові поля', position: 'topRight' });
+      iziToast.error({
+        message: 'Заповніть обовʼязкові поля',
+        position: 'topRight',
+      });
       return;
     }
 
     if (phone.length !== 12) {
-      iziToast.error({ message: 'Телефон має формат 380XXXXXXXXX', position: 'topRight' });
+      iziToast.error({
+        message: 'Телефон має формат 380XXXXXXXXX',
+        position: 'topRight',
+      });
       return;
     }
 
     if (!currentAnimalId) {
-      iziToast.error({ message: 'Не обрано тварину', position: 'topRight' });
+      iziToast.error({
+        message: 'Не обрано тварину',
+        position: 'topRight',
+      });
       return;
     }
 
     try {
       await createOrder({ name, phone, comment, animalId: currentAnimalId });
 
-      iziToast.success({ message: 'Заявку надіслано', position: 'topRight' });
+      iziToast.success({
+        message: 'Заявку надіслано',
+        position: 'topRight',
+      });
+
       closeModal();
     } catch (error) {
-      iziToast.error({ message: error.message || 'Помилка сервера', position: 'topRight' });
+      iziToast.error({
+        message: error.message || 'Помилка сервера',
+        position: 'topRight',
+      });
     }
   });
 
