@@ -5,25 +5,26 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LAPKY JUNIOR</title>
-    <!-- preconect styles -->
+
+    <!-- preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- styles -->
+
+    <!-- fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Open+Sans:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/lapky-junior.js/assets/Favicon-Ayn_Dnqe.png"
-    />
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/Favicon (1).png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/lapky-junior.js/assets/Favicon-Ayn_Dnqe.png" />
     <script type="module" crossorigin src="/lapky-junior.js/index.js"></script>
     <link rel="modulepreload" crossorigin href="/lapky-junior.js/assets/vendor-Cus4JT2T.js">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/vendor-xoblDBnx.css">
     <link rel="stylesheet" crossorigin href="/lapky-junior.js/assets/index-D7zBS4az.css">
   </head>
+
   <body>
     <header class="header">
   <div class="container header-container">
@@ -90,7 +91,9 @@
   </div>
 </header>
 
-    <section class="hero-section">
+
+    <main id="main-content">
+      <section class="hero-section">
   <div class="container hero-container">
     <h1 class="hero-title">
       Кожне життя має значення. Знайди свого вірного друга
@@ -105,7 +108,7 @@
   </div>
 </section>
 
-    <section class="pets-list_container" id="pets-list-section">
+      <section class="pets-list_container" id="pets-list-section">
   <div class="container">
     <h2 class="pets-title">Наші хвостики</h2>
     <p class="pets-text">Вони дуже чекають на знайомство з вами</p>
@@ -122,7 +125,7 @@
   </div>
 </section>
 
-    <section class="About-Us-Section" id="About-Us-Section">
+      <section class="About-Us-Section" id="About-Us-Section">
   <div class="container About-container">
     <h2 class="About-wrap">Чому Хатинка Лапок</h2>
 
@@ -303,7 +306,7 @@
   </div>
 </section>
 
-    <section class="faq-section" id="faq-sect">
+      <section class="faq-section" id="faq-sect">
     <div class="container faq-container">
         <h2 class="faq-title">Все, що ви хотіли знати</h2>
 
@@ -503,7 +506,7 @@
         </ul>
     </div>
 </section>
-    <!-- Success Stories Section -->
+      <!-- Success Stories Section -->
 <section class="success-stories" id="Success-Stories-Section">
   <div class="container success-stories-container">
     <div class="stories-title">
@@ -541,6 +544,8 @@
   </div>
 </section>
 
+    </main>
+        
     <div class="modal-backdrop hidden" id="petModalBackdrop">
   <div class="modal-container" id="petModalContainer">
     <button class="modal-close-btn" id="modalCloseBtn" type="button">
@@ -596,6 +601,51 @@
     </div>
   </div>
 </div>
+
+    <div class="backdrop" data-order-backdrop>
+  <div class="order-modal" data-order-modal>
+<button type="button" class="order-modal__close" aria-label="Закрити модальне вікно">
+  <svg width="24" height="24" aria-hidden="true" focusable="false">
+    <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-close"></use>
+  </svg>
+</button>
+    <h2 class="order-modal__title">Залишіть заявку на знайомство</h2>
+
+    <form class="order-form" id="orderForm">
+      <label class="order-form__field">
+        <span class="order-form__info">Імʼя*</span>
+        <input
+          class="order-form__input"
+          name="name"
+          placeholder="Ім'я"
+          required
+        />
+      </label>
+
+      <label class="order-form__field">
+        <span class="order-form__info">Телефон*</span>
+        <input
+          class="order-form__input"
+          name="phone"
+          placeholder="380"
+          required
+        />
+      </label>
+
+      <label class="order-form__field">
+        <span class="order-form__info">Коментар</span>
+        <textarea
+          class="order-form__comment"
+          name="comment"
+          placeholder="Напишіть ваш коментар"
+        ></textarea>
+      </label>
+
+      <button type="submit" class="order-form__submit">Надіслати</button>
+    </form>
+  </div>
+</div>
+
 
     <footer class="footer">
     <div class="container footer-container">
@@ -653,50 +703,7 @@
     </div>
   </footer>
 
-    <div class="backdrop" data-order-backdrop>
-  <div class="order-modal" data-order-modal>
-<button type="button" class="order-modal__close" aria-label="Закрити модальне вікно">
-  <svg width="24" height="24" aria-hidden="true" focusable="false">
-    <use href="/lapky-junior.js/assets/icons-CpBFOWza.svg#icon-close"></use>
-  </svg>
-</button>
-    <h2 class="order-modal__title">Залишіть заявку на знайомство</h2>
 
-    <form class="order-form" id="orderForm">
-      <label class="order-form__field">
-        <span class="order-form__info">Імʼя*</span>
-        <input
-          class="order-form__input"
-          name="name"
-          placeholder="Ім'я"
-          required
-        />
-      </label>
-
-      <label class="order-form__field">
-        <span class="order-form__info">Телефон*</span>
-        <input
-          class="order-form__input"
-          name="phone"
-          placeholder="380"
-          required
-        />
-      </label>
-
-      <label class="order-form__field">
-        <span class="order-form__info">Коментар</span>
-        <textarea
-          class="order-form__comment"
-          name="comment"
-          placeholder="Напишіть ваш коментар"
-        ></textarea>
-      </label>
-
-      <button type="submit" class="order-form__submit">Надіслати</button>
-    </form>
-  </div>
-</div>
-
-    <!-- main scripts -->
+    <!-- scripts -->
   </body>
 </html>
